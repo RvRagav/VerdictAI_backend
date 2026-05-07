@@ -63,6 +63,7 @@ _allow_origins = [
     "http://127.0.0.1:5174",
     "http://127.0.0.1:5175",
     *_prod_origins,
+    "https://verdict-ai-frontend-ebon.vercel.app/"
 ]
 # If no production origin set, allow all Vercel preview URLs via regex.
 app.add_middleware(
