@@ -13,7 +13,7 @@ import sqlite3
 import uuid
 from datetime import datetime, timezone
 
-from backend.services import embedding_service
+from services import embedding_service
 
 
 # Stop words to remove from FTS5 queries

@@ -1,4 +1,4 @@
-"""Unit tests for backend.utils.hash_utils module."""
+"""Unit tests for utils.hash_utils module."""
 
 import hashlib
 import json
@@ -7,7 +7,7 @@ import tempfile
 
 import pytest
 
-from backend.utils.hash_utils import compute_entry_hash, compute_file_hash
+from utils.hash_utils import compute_entry_hash, compute_file_hash
 
 
 class TestComputeEntryHash:

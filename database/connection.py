@@ -10,7 +10,7 @@ import sqlite3
 from contextlib import contextmanager
 from pathlib import Path
 
-from backend.config import settings
+from config import settings
 
 
 def get_db(db_path: str | None = None) -> sqlite3.Connection:
@@ -66,8 +66,8 @@ def init_db(db_path: str | None = None) -> None:
     Args:
         db_path: Optional path to the database file. Defaults to settings.db_path.
     """
-    from backend.database.schema import create_tables
-    from backend.database.seed import seed_demo_data
+    from database.schema import create_tables
+    from database.seed import seed_demo_data
 
     with get_db_connection(db_path) as conn:
         create_tables(conn)

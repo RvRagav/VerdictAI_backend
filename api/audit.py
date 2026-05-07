@@ -19,10 +19,10 @@ from fastapi import APIRouter, Depends, HTTPException, Query
 from fastapi.responses import FileResponse
 from pydantic import BaseModel
 
-from backend.database.connection import get_db
-from backend.layers.l5_audit import get_audit_trail
-from backend.services.report_service import generate_report, get_report_download_path
-from backend.services.reproducibility import (
+from database.connection import get_db
+from layers.l5_audit import get_audit_trail
+from services.report_service import generate_report, get_report_download_path
+from services.reproducibility import (
     reproduce_evaluation as _reproduce_evaluation_service,
     verify_reproducibility,
 )

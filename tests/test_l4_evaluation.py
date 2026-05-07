@@ -7,9 +7,9 @@ from datetime import datetime, timezone
 
 import pytest
 
-from backend.database.schema import create_tables
-from backend.database.seed import seed_demo_data
-from backend.layers.l4_evaluation import (
+from database.schema import create_tables
+from database.seed import seed_demo_data
+from layers.l4_evaluation import (
     compute_route,
     evaluate_criterion,
     evaluate_all_bidders,

@@ -17,8 +17,8 @@ import sqlite3
 from fastapi import APIRouter, Depends, HTTPException, Query
 from pydantic import BaseModel
 
-from backend.database.connection import get_db
-from backend.services.hitl_service import (
+from database.connection import get_db
+from services.hitl_service import (
     get_hitl_card,
     get_hitl_queue,
     process_decision,

@@ -12,7 +12,7 @@ from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 
-from backend.api import (
+from api import (
     audit_router,
     cpm_router,
     documents_router,
@@ -20,7 +20,7 @@ from backend.api import (
     hitl_router,
     tenders_router,
 )
-from backend.config import settings
+from config import settings
 
 
 async def init_database():
@@ -28,7 +28,7 @@ async def init_database():
 
     Creates tables and seeds demo data if running for the first time.
     """
-    from backend.database.connection import init_db
+    from database.connection import init_db
     init_db(settings.db_path)
 
 

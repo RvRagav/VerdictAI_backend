@@ -20,17 +20,17 @@ import uuid
 from datetime import datetime, timezone
 from pathlib import Path
 
-from backend.layers.l5_audit import append_audit_event
-from backend.utils.hash_utils import compute_file_hash
-from backend.utils.image_processing import preprocess_page_image
-from backend.utils.ocr_utils import (
+from layers.l5_audit import append_audit_event
+from utils.hash_utils import compute_file_hash
+from utils.image_processing import preprocess_page_image
+from utils.ocr_utils import (
     compute_page_confidence,
     extract_text_from_image,
     is_degraded_page,
 )
-from backend.utils.pdf_utils import extract_page_images, parse_pdf
-from backend.utils.docx_utils import parse_docx
-from backend.utils.image_utils import (
+from utils.pdf_utils import extract_page_images, parse_pdf
+from utils.docx_utils import parse_docx
+from utils.image_utils import (
     SUPPORTED_IMAGE_EXTENSIONS,
     copy_image_as_page,
     parse_image,

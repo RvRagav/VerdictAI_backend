@@ -6,10 +6,10 @@ from datetime import datetime, timezone
 
 import pytest
 
-from backend.database.connection import get_db
-from backend.database.schema import create_tables
-from backend.database.seed import seed_demo_data
-from backend.layers.l3_evidence import (
+from database.connection import get_db
+from database.schema import create_tables
+from database.seed import seed_demo_data
+from layers.l3_evidence import (
     extract_evidence,
     _compute_extraction_confidence,
     _empty_evidence,

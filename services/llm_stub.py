@@ -14,6 +14,6 @@ Prefer importing directly from :mod:`backend.services.semantic_service`
 for new code.
 """
 
-from backend.services.semantic_service import LLMStub  # noqa: F401
+from services.semantic_service import LLMStub  # noqa: F401
 
 __all__ = ["LLMStub"]

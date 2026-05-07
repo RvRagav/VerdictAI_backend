@@ -13,8 +13,8 @@ import sqlite3
 
 from fastapi import APIRouter, Depends, HTTPException, Query
 
-from backend.database.connection import get_db
-from backend.services.cpm_service import get_cpm_stats, search_cpm_precedents
+from database.connection import get_db
+from services.cpm_service import get_cpm_stats, search_cpm_precedents
 
 router = APIRouter(prefix="/cpm", tags=["cpm"])
 

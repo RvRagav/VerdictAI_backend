@@ -27,7 +27,7 @@ from typing import Optional
 
 import pdfplumber
 
-from backend.services.criterion_extractor import to_rupees
+from services.criterion_extractor import to_rupees
 
 
 logger = logging.getLogger(__name__)
@@ -449,7 +449,7 @@ def extract_company_name(text: str) -> Optional[str]:
 
     The returned name is trimmed of surrounding whitespace and its
     leading "M/s " (if present), since downstream comparison uses
-    :func:`backend.services.entity_matcher.normalise_company_name`
+    :func:`services.entity_matcher.normalise_company_name`
     which handles suffixes separately.
 
     Args:

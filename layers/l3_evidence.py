@@ -4,12 +4,12 @@ Provides type-specific evidence extraction from bidder documents for
 each criterion type. Every extraction is driven by real OCR text and
 PDF tables — no hash-seeded or random values. Delegates to:
 
-  * :mod:`backend.services.evidence_extractor` for numeric / categorical /
+  * :mod:`services.evidence_extractor` for numeric / categorical /
     temporal extraction,
-  * :mod:`backend.services.semantic_service.LLMStub` (re-exported via
-    :mod:`backend.services.llm_stub`) for qualitative assessment,
-  * :mod:`backend.services.entity_matcher` for company-name mismatch,
-  * :mod:`backend.services.cpm_service` for precedent lookup.
+  * :mod:`services.semantic_service.LLMStub` (re-exported via
+    :mod:`services.llm_stub`) for qualitative assessment,
+  * :mod:`services.entity_matcher` for company-name mismatch,
+  * :mod:`services.cpm_service` for precedent lookup.
 
 Requirements: 6.1, 6.2, 6.3, 6.4, 6.5, 6.6
 """
@@ -18,18 +18,18 @@ import json
 import sqlite3
 from typing import Optional
 
-from backend.services.entity_matcher import match_entity
-from backend.services.cpm_service import (
+from services.entity_matcher import match_entity
+from services.cpm_service import (
     search_cpm_precedents,
     search_cpm_precedents_semantic,
 )
-from backend.services.llm_stub import LLMStub
-from backend.services import evidence_extractor
-from backend.services.union_service import (
+from services.llm_stub import LLMStub
+from services import evidence_extractor
+from services.union_service import (
     disambiguate_entity_union,
     evaluate_qualitative_union,
 )
-from backend.layers.l5_audit import append_audit_event
+from layers.l5_audit import append_audit_event
 
 
 # Number of CPM entries below which we prefer semantic re-ranking over FTS5.

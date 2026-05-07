@@ -24,9 +24,9 @@ import logging
 from dataclasses import asdict, dataclass, field
 from typing import Any, Optional
 
-from backend.services import criterion_extractor, embedding_service
-from backend.services.llm_client import LLMClient, LLMResponse, get_default_client
-from backend.services.prompts import (
+from services import criterion_extractor, embedding_service
+from services.llm_client import LLMClient, LLMResponse, get_default_client
+from services.prompts import (
     CRITERION_EXTRACTION_SCHEMA,
     CRITERION_EXTRACTION_SYSTEM,
     CORRIGENDUM_MAPPING_SCHEMA,
@@ -331,8 +331,8 @@ def disambiguate_entity_union(
     byte-identical results. Without logging, the rerun would issue a
     fresh LLM call that might diverge.
     """
-    from backend.services.entity_matcher import match_entity
-    from backend.services.llm_stub import LLMStub
+    from services.entity_matcher import match_entity
+    from services.llm_stub import LLMStub
 
     client = llm_client or get_default_client()
 
@@ -442,7 +442,7 @@ def _log_entity_llm_call(
     logging failure should never break evaluation.
     """
     try:
-        from backend.services.llm_stub import LLMStub
+        from services.llm_stub import LLMStub
         stub = LLMStub()
         request = {
             "prompt_type": "entity_disambiguation",

@@ -20,10 +20,10 @@ from datetime import datetime, timezone
 
 from fastapi import APIRouter, Depends, HTTPException, Query
 
-from backend.database.connection import get_db
-from backend.layers.l4_evaluation import evaluate_all_bidders
-from backend.layers.l5_audit import append_audit_event
-from backend.services.debarment_service import check_debarment
+from database.connection import get_db
+from layers.l4_evaluation import evaluate_all_bidders
+from layers.l5_audit import append_audit_event
+from services.debarment_service import check_debarment
 
 router = APIRouter(tags=["evaluation"])
 

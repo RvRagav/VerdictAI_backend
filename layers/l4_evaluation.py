@@ -17,12 +17,12 @@ import sqlite3
 import uuid
 from datetime import datetime, timezone
 
-from backend.config import settings
-from backend.layers.l3_evidence import extract_evidence
-from backend.layers.l5_audit import append_audit_event
-from backend.services.cpm_service import get_cpm_stats
-from backend.services.debarment_service import check_debarment
-from backend.services.explanation_service import build_explanation
+from config import settings
+from layers.l3_evidence import extract_evidence
+from layers.l5_audit import append_audit_event
+from services.cpm_service import get_cpm_stats
+from services.debarment_service import check_debarment
+from services.explanation_service import build_explanation
 
 
 def compute_route(
@@ -508,7 +508,7 @@ def _evaluate_numeric_threshold(
     rupees via ``to_rupees``. If either side is stored in raw units
     (older data), we re-normalise here using the ``unit`` field.
     """
-    from backend.services.criterion_extractor import to_rupees
+    from services.criterion_extractor import to_rupees
 
     value = evidence.get("value")
     extraction_confidence = evidence.get("extraction_confidence", 0.0)

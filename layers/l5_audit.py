@@ -13,7 +13,7 @@ import json
 import sqlite3
 from datetime import datetime, timezone
 
-from backend.utils.hash_utils import compute_entry_hash
+from utils.hash_utils import compute_entry_hash
 
 
 # Genesis hash used as prev_hash for the first entry in a tender's chain

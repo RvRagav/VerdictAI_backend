@@ -34,7 +34,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Iterable
 
-from backend.layers.l5_audit import append_audit_event, get_audit_trail, verify_hash_chain
+from layers.l5_audit import append_audit_event, get_audit_trail, verify_hash_chain
 
 logger = logging.getLogger(__name__)
 

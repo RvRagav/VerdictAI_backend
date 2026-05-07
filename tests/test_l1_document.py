@@ -15,16 +15,16 @@ import uuid
 import pytest
 from PyPDF2 import PdfWriter
 
-from backend.database.connection import get_db
-from backend.database.schema import create_tables
-from backend.layers.l1_document import process_document
-from backend.utils.image_processing import preprocess_page_image
-from backend.utils.ocr_utils import (
+from database.connection import get_db
+from database.schema import create_tables
+from layers.l1_document import process_document
+from utils.image_processing import preprocess_page_image
+from utils.ocr_utils import (
     compute_page_confidence,
     extract_text_from_image,
     is_degraded_page,
 )
-from backend.utils.pdf_utils import extract_page_images, parse_pdf
+from utils.pdf_utils import extract_page_images, parse_pdf
 
 
 # ─── Fixtures ──────────────────────────────────────────────────────────────────
@@ -161,7 +161,7 @@ class TestPreprocessPageImage:
     @pytest.fixture
     def real_page_image(self, tmp_path):
         """Rasterise page 1 of a demo PDF to a real PNG."""
-        from backend.utils.pdf_utils import extract_page_images
+        from utils.pdf_utils import extract_page_images
         demo_pdf = "backend/demo_data/sample_nit.pdf"
         images = extract_page_images(demo_pdf, str(tmp_path), dpi=200)
         assert images, "Demo PDF should produce at least one page image"
@@ -212,7 +212,7 @@ class TestExtractTextFromImage:
     @pytest.fixture
     def real_page_image(self, tmp_path):
         """Rasterise page 1 of a demo PDF to a real PNG."""
-        from backend.utils.pdf_utils import extract_page_images
+        from utils.pdf_utils import extract_page_images
         demo_pdf = "backend/demo_data/sample_nit.pdf"
         images = extract_page_images(demo_pdf, str(tmp_path), dpi=300)
         assert images, "Demo PDF should produce at least one page image"

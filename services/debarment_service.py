@@ -9,7 +9,7 @@ Requirements: 5.1, 5.2, 5.3
 
 import sqlite3
 
-from backend.services.entity_matcher import normalise_company_name
+from services.entity_matcher import normalise_company_name
 
 from difflib import SequenceMatcher
 

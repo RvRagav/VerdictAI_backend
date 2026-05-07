@@ -25,10 +25,10 @@ import uuid
 from datetime import datetime, timezone
 from typing import Optional
 
-from backend.layers.l5_audit import append_audit_event
-from backend.services.cpm_service import store_precedent
-from backend.services.llm_stub import LLMStub
-from backend.services.union_service import (
+from layers.l5_audit import append_audit_event
+from services.cpm_service import store_precedent
+from services.llm_stub import LLMStub
+from services.union_service import (
     extract_criteria_union,
     map_corrigendum_union,
 )

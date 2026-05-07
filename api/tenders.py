@@ -26,9 +26,9 @@ from datetime import datetime, timezone
 from fastapi import APIRouter, Depends, HTTPException
 from pydantic import BaseModel
 
-from backend.database.connection import get_db
-from backend.layers.l5_audit import append_audit_event
-from backend.services.cpm_service import search_cpm_precedents
+from database.connection import get_db
+from layers.l5_audit import append_audit_event
+from services.cpm_service import search_cpm_precedents
 
 router = APIRouter(prefix="/tenders", tags=["tenders"])
 
@@ -280,8 +280,8 @@ async def trigger_processing(
     document is OCR'd, then the NIT goes through union extraction,
     and any corrigendum is applied.
     """
-    from backend.layers.l1_document import process_document
-    from backend.layers.l2_ets_builder import extract_criteria, apply_corrigendum
+    from layers.l1_document import process_document
+    from layers.l2_ets_builder import extract_criteria, apply_corrigendum
 
     conn.row_factory = sqlite3.Row
 

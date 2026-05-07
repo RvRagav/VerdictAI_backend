@@ -1,19 +1,19 @@
-"""Unit tests for backend.layers.l5_audit module."""
+"""Unit tests for layers.l5_audit module."""
 
 import json
 import sqlite3
 
 import pytest
 
-from backend.database.connection import get_db
-from backend.database.schema import create_tables
-from backend.layers.l5_audit import (
+from database.connection import get_db
+from database.schema import create_tables
+from layers.l5_audit import (
     GENESIS_HASH,
     append_audit_event,
     get_audit_trail,
     verify_hash_chain,
 )
-from backend.utils.hash_utils import compute_entry_hash
+from utils.hash_utils import compute_entry_hash
 
 
 @pytest.fixture

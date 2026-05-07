@@ -29,7 +29,7 @@ import sqlite3
 from pathlib import Path
 from typing import Any, Iterable
 
-from backend.layers.l5_audit import verify_hash_chain
+from layers.l5_audit import verify_hash_chain
 
 
 logger = logging.getLogger(__name__)
@@ -92,13 +92,13 @@ def reproduce_evaluation(
     """
     # Imported here to avoid circular imports: L3 / L4 pull in services
     # that in turn import from here indirectly.
-    from backend.layers.l3_evidence import extract_evidence
-    from backend.layers.l4_evaluation import (
+    from layers.l3_evidence import extract_evidence
+    from layers.l4_evaluation import (
         compute_route,
         _evaluate_by_type,
     )
-    from backend.services.cpm_service import get_cpm_stats
-    from backend.services.explanation_service import build_explanation
+    from services.cpm_service import get_cpm_stats
+    from services.explanation_service import build_explanation
 
     conn.row_factory = sqlite3.Row
 
@@ -132,8 +132,8 @@ def reproduce_evaluation(
     # Install a CachedLLMClient as the process-wide default so the real
     # pipeline code transparently hits the cache. We restore the old
     # default on the way out so we don't contaminate other callers.
-    from backend.services import llm_client as llm_client_module
-    from backend.services.llm_client import CachedLLMClient
+    from services import llm_client as llm_client_module
+    from services.llm_client import CachedLLMClient
 
     original_client = llm_client_module._default_client
     cached_client = CachedLLMClient(conn=conn, tender_id=tender_id)

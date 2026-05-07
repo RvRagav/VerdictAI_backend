@@ -17,8 +17,8 @@ from datetime import datetime, timezone
 
 import pytest
 
-from backend.database.schema import create_tables
-from backend.layers.l2_ets_builder import (
+from database.schema import create_tables
+from layers.l2_ets_builder import (
     apply_corrigendum,
     approve_schema,
     build_ets,

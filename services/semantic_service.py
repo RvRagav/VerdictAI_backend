@@ -2,9 +2,9 @@
 
 Replaces the pre-configured LLM stub with deterministic, real
 computations backed by:
-  - :mod:`backend.services.criterion_extractor` for criterion extraction,
-  - :mod:`backend.services.embedding_service` for semantic similarity,
-  - :mod:`backend.services.evidence_extractor` for evidence surfacing.
+  - :mod:`services.criterion_extractor` for criterion extraction,
+  - :mod:`services.embedding_service` for semantic similarity,
+  - :mod:`services.evidence_extractor` for evidence surfacing.
 
 The public class :class:`LLMStub` is preserved so existing callers keep
 working, but its methods now produce results from the real services. In
@@ -34,7 +34,7 @@ from typing import Optional
 
 import sqlite3
 
-from backend.services import (
+from services import (
     criterion_extractor,
     embedding_service,
     evidence_extractor,

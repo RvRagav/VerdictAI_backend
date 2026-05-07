@@ -11,8 +11,8 @@ import json
 import sqlite3
 from datetime import datetime, timezone
 
-from backend.layers.l5_audit import append_audit_event
-from backend.services.cpm_service import search_cpm_precedents, store_precedent
+from layers.l5_audit import append_audit_event
+from services.cpm_service import search_cpm_precedents, store_precedent
 
 
 def process_decision(

@@ -20,7 +20,7 @@ from pathlib import Path
 
 from fastapi import APIRouter, Depends, File, Form, HTTPException, UploadFile
 
-from backend.database.connection import get_db
+from database.connection import get_db
 
 router = APIRouter(prefix="/documents", tags=["documents"])
 
