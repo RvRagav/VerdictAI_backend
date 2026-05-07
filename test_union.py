@@ -7,10 +7,10 @@ for f in ("verdict_ai.db", "verdict_ai.db-wal", "verdict_ai.db-shm"):
     if os.path.exists(f):
         os.remove(f)
 
-from backend.main import app
-from backend.database.connection import get_db
-from backend.layers.l1_document import process_document
-from backend.layers.l2_ets_builder import extract_criteria
+from main import app
+from database.connection import get_db
+from layers.l1_document import process_document
+from layers.l2_ets_builder import extract_criteria
 
 
 def main():

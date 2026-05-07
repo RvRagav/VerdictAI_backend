@@ -22,7 +22,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 
-# Make `backend.*` importable when running this file directly.
+# Make `*` importable when running this file directly.
 _ROOT = Path(__file__).resolve().parent.parent
 if str(_ROOT) not in sys.path:
     sys.path.insert(0, str(_ROOT))
@@ -59,8 +59,8 @@ def _header(title: str) -> None:
 
 def _fresh_db() -> tuple[sqlite3.Connection, str, str]:
     """Create a temp DB with a seed tender and return (conn, tender_id, path)."""
-    from backend.database.connection import get_db
-    from backend.database.schema import create_tables
+    from database.connection import get_db
+    from database.schema import create_tables
 
     path = tempfile.mktemp(suffix=".db")
     conn = get_db(path)
@@ -144,7 +144,7 @@ def _make_test_docx(out_dir: Path) -> Path:
 def check_multi_format() -> bool:
     _header("1. Multi-format document ingest")
 
-    from backend.layers.l1_document import process_document
+    from layers.l1_document import process_document
 
     ok = True
     with tempfile.TemporaryDirectory() as tmpdir:
@@ -257,7 +257,7 @@ def check_multi_format() -> bool:
 def check_explanation_service() -> bool:
     _header("2. Explanation service")
 
-    from backend.services.explanation_service import build_explanation
+    from services.explanation_service import build_explanation
 
     ok = True
 
@@ -495,12 +495,12 @@ def _setup_full_tender(conn: sqlite3.Connection) -> str:
 def check_reproducibility() -> bool:
     _header("3. Reproducibility")
 
-    from backend.database.connection import get_db
-    from backend.database.schema import create_tables
-    from backend.database.seed import seed_demo_data
-    from backend.layers.l3_evidence import extract_evidence  # noqa: F401
-    from backend.layers.l4_evaluation import evaluate_all_bidders
-    from backend.services.reproducibility import reproduce_evaluation
+    from database.connection import get_db
+    from database.schema import create_tables
+    from database.seed import seed_demo_data
+    from layers.l3_evidence import extract_evidence  # noqa: F401
+    from layers.l4_evaluation import evaluate_all_bidders
+    from services.reproducibility import reproduce_evaluation
 
     ok = True
     db_path = tempfile.mktemp(suffix=".db")
@@ -567,11 +567,11 @@ def check_reproducibility() -> bool:
 def check_pdf_report() -> bool:
     _header("4. Print-ready PDF report")
 
-    from backend.database.connection import get_db
-    from backend.database.schema import create_tables
-    from backend.database.seed import seed_demo_data
-    from backend.layers.l4_evaluation import evaluate_all_bidders
-    from backend.services.report_service import generate_report
+    from database.connection import get_db
+    from database.schema import create_tables
+    from database.seed import seed_demo_data
+    from layers.l4_evaluation import evaluate_all_bidders
+    from services.report_service import generate_report
 
     ok = True
     db_path = tempfile.mktemp(suffix=".db")
@@ -671,11 +671,11 @@ def check_audit_chain_api() -> bool:
     """Backend endpoints the new Audit Trail + Reproduce UIs consume."""
     _header("5. Audit chain API")
 
-    from backend.database.connection import get_db
-    from backend.database.schema import create_tables
-    from backend.database.seed import seed_demo_data
-    from backend.layers.l4_evaluation import evaluate_all_bidders
-    from backend.layers.l5_audit import get_audit_trail
+    from database.connection import get_db
+    from database.schema import create_tables
+    from database.seed import seed_demo_data
+    from layers.l4_evaluation import evaluate_all_bidders
+    from layers.l5_audit import get_audit_trail
 
     ok = True
     db_path = tempfile.mktemp(suffix=".db")
@@ -729,7 +729,7 @@ def main() -> int:
     # verification tender uses synthetic paths that don't exist on disk.
     import logging
     logging.getLogger("pdfminer").setLevel(logging.CRITICAL)
-    logging.getLogger("backend.services.evidence_extractor").setLevel(
+    logging.getLogger("services.evidence_extractor").setLevel(
         logging.CRITICAL
     )
 

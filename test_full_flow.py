@@ -28,7 +28,7 @@ def main() -> int:
     # Ensure LLM enabled
     os.environ.pop("LLM_DISABLED", None)
 
-    from backend.main import app
+    from main import app
 
     print("=" * 74)
     print("  VerdictAI — Full API flow test (exactly what the UI calls)")

@@ -51,13 +51,13 @@ def main() -> int:
     # Ensure LLM enabled (conftest disables it for tests; we want the real thing)
     os.environ.pop("LLM_DISABLED", None)
 
-    from backend.main import app
-    from backend.database.connection import get_db
-    from backend.layers.l1_document import process_document
-    from backend.layers.l2_ets_builder import extract_criteria, apply_corrigendum, approve_schema
-    from backend.layers.l4_evaluation import evaluate_all_bidders
-    from backend.services.report_service import generate_report
-    from backend.layers.l5_audit import verify_hash_chain
+    from main import app
+    from database.connection import get_db
+    from layers.l1_document import process_document
+    from layers.l2_ets_builder import extract_criteria, apply_corrigendum, approve_schema
+    from layers.l4_evaluation import evaluate_all_bidders
+    from services.report_service import generate_report
+    from layers.l5_audit import verify_hash_chain
 
     failures: list[str] = []
 

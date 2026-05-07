@@ -7,7 +7,7 @@ Exports:
     get_db_connection: Context manager for transactions.
 """
 
-from backend.database.connection import get_db, get_db_connection, init_db
-from backend.database.seed import seed_demo_data
+from database.connection import get_db, get_db_connection, init_db
+from database.seed import seed_demo_data
 
 __all__ = ["init_db", "seed_demo_data", "get_db", "get_db_connection"]

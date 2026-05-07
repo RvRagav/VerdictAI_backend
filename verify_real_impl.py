@@ -18,8 +18,8 @@ import sys
 
 
 def check_1_nit_extraction() -> bool:
-    from backend.utils.pdf_utils import parse_pdf
-    from backend.services.criterion_extractor import extract_criteria_from_text
+    from utils.pdf_utils import parse_pdf
+    from services.criterion_extractor import extract_criteria_from_text
 
     parsed = parse_pdf("backend/demo_data/sample_nit.pdf")
     text = "\n".join(p["text"] for p in parsed["pages"])
@@ -35,7 +35,7 @@ def check_1_nit_extraction() -> bool:
 
 
 def check_2_numeric_extraction() -> bool:
-    from backend.services.evidence_extractor import extract_numeric_value
+    from services.evidence_extractor import extract_numeric_value
 
     result = extract_numeric_value("Annual turnover of Rs. 12.45 Crore")
     print(f"2) extract_numeric_value result: {result}")
@@ -50,7 +50,7 @@ def check_2_numeric_extraction() -> bool:
 
 
 def check_3_embedding_similarity() -> bool:
-    from backend.services import embedding_service
+    from services import embedding_service
 
     score = embedding_service.similarity_score(
         "construction of bridge", "building an overpass"
@@ -61,7 +61,7 @@ def check_3_embedding_similarity() -> bool:
 
 
 def check_4_llm_stub_shape() -> bool:
-    from backend.services.llm_stub import LLMStub
+    from services.llm_stub import LLMStub
 
     llm = LLMStub()
 
